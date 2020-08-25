@@ -13,7 +13,7 @@ import {
   NORMATIVE_STATUS_CHOICES, DESIGNATION_TYPES,
 } from 'models/concepts';
 
-import { AutoSizedTextArea } from '../widgets';
+import { AutoSizedTextArea, WirisMathType } from '../widgets';
 import styles from './styles.scss';
 import { isRTL } from 'app';
 
@@ -278,7 +278,17 @@ export const EntryForm: React.FC<EntryFormProps> = function (props) {
             </p>
           </>}
           labelInfo="(required)">
-        <AutoSizedTextArea fill
+            
+        <WirisMathType
+          value={props.entry.definition || ''}
+          onChange={(val: any) => {
+            props.onDefinitionChange
+              ? props.onDefinitionChange(val)
+              : void 0
+            }
+          }
+        />
+        {/* <AutoSizedTextArea fill
           dir={rtl ? 'rtl' : 'ltr'}
           className={rtl ? Classes.RTL : undefined}
           value={props.entry.definition || ''}
@@ -288,7 +298,7 @@ export const EntryForm: React.FC<EntryFormProps> = function (props) {
           onChange={(evt: React.FormEvent<HTMLTextAreaElement>) =>
             props.onDefinitionChange
               ? props.onDefinitionChange((evt.target as HTMLTextAreaElement).value)
-              : void 0} />
+              : void 0} /> */}
       </FormGroup>
 
       {[...props.entry.examples.entries()].map(([idx, item]) =>

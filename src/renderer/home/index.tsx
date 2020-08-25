@@ -31,6 +31,7 @@ import { default as view } from './modules/view';
 import { default as map } from './modules/map';
 import { default as translate } from './modules/translate';
 import { default as create } from './modules/create';
+import { WirisScriptInsert } from './widgets';
 
 const MODULE_CONFIG: { [id: string]: ModuleConfig } = {
   review,
@@ -119,6 +120,7 @@ const Window: React.FC<WindowComponentProps> = function () {
 
   return (
     <div className={styles.homeWindowLayout}>
+      <WirisScriptInsert></WirisScriptInsert>
       <DocsContext.Provider value={{ hoveredItem, setHoveredItem }}>
 
         <TopPanel
